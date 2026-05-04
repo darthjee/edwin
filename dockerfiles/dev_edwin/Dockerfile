@@ -1,26 +1,29 @@
-# Edwin RPG – Development Environment
-# Node.js 20 LTS on Alpine for a small image footprint.
+FROM darthjee/scripts:0.8.0 as scripts
+FROM darthjee/node:0.2.1 as base
 
-FROM node:20-alpine
+USER root
+RUN apt-get update && apt-get install -y rsync && rm -rf /var/lib/apt/lists/*
+USER node
 
-# Install bash and git (useful for debugging inside the container)
-RUN apk add --no-cache bash git
+COPY --chown=node:node \
+  ./source/package.json ./source/yarn.lock \
+  /home/node/app/
 
-# Set working directory
-WORKDIR /app
+######################################
 
-# Copy dependency manifests first to leverage Docker layer caching
-COPY source/package*.json ./
+FROM base as builder
 
-# Install all dependencies (including devDependencies for dev mode)
-RUN npm install
+ENV HOME_DIR /home/node
 
-# Copy the rest of the source
-COPY source/ .
+USER root
+COPY --chown=node:node --from=scripts /home/scripts/builder/yarn_builder.sh /usr/local/sbin/yarn_builder.sh
+RUN /bin/bash yarn_builder.sh
 
-# Expose the Vite dev server port
-EXPOSE 5173
+#######################
+# FINAL IMAGE
+FROM base
+ENV HOME_DIR /home/node
 
-# Start the Vite development server, binding to all interfaces so the host
-# can reach it via localhost.
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+COPY --chown=node:node --from=builder /home/node/yarn/new/ /usr/local/share/.cache/yarn/v6/
+
+USER node
