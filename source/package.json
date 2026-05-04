@@ -1,6 +1,6 @@
 {
   "name": "edwin",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Edwin RPG Game Engine – a Node.js framework for building text-based RPG web applications with React and Bootstrap",
   "type": "module",
   "main": "src/index.js",
