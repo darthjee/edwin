@@ -23,3 +23,10 @@ services:
     stdin_open: true
     tty: true
     command: /bin/bash
+
+  basic_example:
+    <<: *base
+    container_name: basic_example
+    depends_on: [base_build]
+    environment:
+      - NODE_ENV=development
