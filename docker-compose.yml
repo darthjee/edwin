@@ -32,4 +32,4 @@ services:
       - NODE_ENV=development
     ports:
       - "3000:3000"
-    command: npx vite examples/basic-rpg --host 0.0.0.0 --port 3000
+    command: npx vite examples/basic-rpg --config vite.config.js --host 0.0.0.0 --port 3000
