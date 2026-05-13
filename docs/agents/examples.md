@@ -20,9 +20,10 @@ examples/<name>/
   main.jsx         # React application root
   index.html       # HTML entry point
   vite.config.js   # Vite config with edwin alias
-  package.json     # app manifest and scripts
-  .eslintrc.json   # ESLint rules
+  package.json     # app manifest and scripts (lint, lint_fix, lint_report)
 ```
+
+ESLint rules are defined once in the root `eslint.config.mjs` and apply to all examples automatically.
 
 ## Edwin as a Sibling Dependency
 
@@ -70,13 +71,19 @@ advanced_example:
 
 ## Running
 
+All commands must be run via Docker — do not use a local Node.js installation.
+
 ```bash
-# Start the build image first (only needed once)
+# Build the dev image (only needed once, or after Dockerfile changes)
 docker-compose up base_build
 
-# Run an example
+# Start an example dev server
 docker-compose up basic_example    # http://localhost:3000
 docker-compose up advanced_example # http://localhost:3010
+
+# Run lint inside an example container
+docker-compose run --rm basic_example yarn lint
+docker-compose run --rm basic_example yarn lint_fix
 ```
 
 ## Shared node_modules

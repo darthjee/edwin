@@ -10,6 +10,8 @@
 | `docker_volumes/` | Persistent Docker volume mounts (e.g. `node_modules` for the container). |
 | `docs/` | Agent-facing documentation (architecture, flow, plans, issues). |
 | `docker-compose.yml` | Defines development containers for the Edwin library and each example. |
+| `eslint.config.mjs` | Shared ESLint flat config (v9) — applies to `source/` and all `examples/`. |
+| `package.json` | Workspace root manifest — lint and test scripts that span the whole repo. |
 | `AGENTS.md` | Shared project instructions for Claude and Copilot. |
 | `README.md` | Human-facing project overview and quick-start guide. |
 | `LICENSE` | MIT licence. |
@@ -41,8 +43,7 @@ Each example folder contains:
 | `main.jsx` | React application root. |
 | `index.html` | HTML entry point. |
 | `vite.config.js` | Vite dev server configuration with `edwin` alias. |
-| `package.json` | App manifest and scripts. |
-| `.eslintrc.json` | ESLint rules. |
+| `package.json` | App manifest and scripts (`lint`, `lint_fix`, `lint_report`). |
 
 ## `source/src/`
 
