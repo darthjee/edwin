@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Action } from '../../src/entities/Action.js';
+import { Action } from '../../lib/entities/Action.js';
 
 describe('Action', () => {
   const makeAction = (overrides = {}) =>

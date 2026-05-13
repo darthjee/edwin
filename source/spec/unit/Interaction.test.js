@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Interaction } from '../../src/entities/Interaction.js';
+import { Interaction } from '../../lib/entities/Interaction.js';
 
 const makeInteraction = () =>
   new Interaction({

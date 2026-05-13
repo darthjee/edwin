@@ -35,12 +35,12 @@ The examples do not install Edwin from npm. Instead, Edwin's source code is inje
 /home/node/app/node_modules/  ← shared node_modules volume
 ```
 
-The `vite.config.js` in each example defines a `resolve.alias` so that `import { ... } from 'edwin'` resolves to `/home/node/app/edwin/src/index.js`:
+The `vite.config.js` in each example defines a `resolve.alias` so that `import { ... } from 'edwin'` resolves to `/home/node/app/edwin/lib/index.js`:
 
 ```js
 resolve: {
   alias: {
-    edwin: resolve(__dirname, 'edwin/src/index.js'),
+    edwin: resolve(__dirname, 'edwin/lib/index.js'),
   },
 },
 ```

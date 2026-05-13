@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { Location } from '../../src/entities/Location.js';
-import { Item } from '../../src/entities/Item.js';
-import { NPC } from '../../src/entities/NPC.js';
+import { Location } from '../../lib/entities/Location.js';
+import { Item } from '../../lib/entities/Item.js';
+import { NPC } from '../../lib/entities/NPC.js';
 
 describe('Location', () => {
   const makeLocation = (overrides = {}) =>

@@ -20,8 +20,8 @@
 
 | Subdirectory / File | Description |
 |--------------------|-------------|
-| `src/` | Library source code — the public API of the package. |
-| `tests/` | Unit and integration tests (Vitest). |
+| `lib/` | Library source code — the public API of the package. |
+| `spec/` | Unit and integration tests (Vitest). |
 | `docs/` | Technical documentation (API reference, architecture, examples guide). |
 | `package.json` | Package manifest and scripts. |
 | `vite.config.js` | Vite build and dev-server configuration. |
@@ -45,7 +45,7 @@ Each example folder contains:
 | `vite.config.js` | Vite dev server configuration with `edwin` alias. |
 | `package.json` | App manifest and scripts (`lint`, `lint_fix`, `lint_report`). |
 
-## `source/src/`
+## `source/lib/`
 
 | Subdirectory / File | Description |
 |--------------------|-------------|

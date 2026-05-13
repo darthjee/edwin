@@ -5,13 +5,13 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-import { Game } from '../../src/entities/Game.js';
-import { Location } from '../../src/entities/Location.js';
-import { NPC } from '../../src/entities/NPC.js';
-import { Item } from '../../src/entities/Item.js';
-import { Interaction } from '../../src/entities/Interaction.js';
-import { Action } from '../../src/entities/Action.js';
-import { GameStateManager } from '../../src/core/GameStateManager.js';
+import { Game } from '../../lib/entities/Game.js';
+import { Location } from '../../lib/entities/Location.js';
+import { NPC } from '../../lib/entities/NPC.js';
+import { Item } from '../../lib/entities/Item.js';
+import { Interaction } from '../../lib/entities/Interaction.js';
+import { Action } from '../../lib/entities/Action.js';
+import { GameStateManager } from '../../lib/core/GameStateManager.js';
 
 function buildWorld() {
   const potion = new Item({

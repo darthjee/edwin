@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { EventSystem } from '../../src/entities/EventSystem.js';
+import { EventSystem } from '../../lib/entities/EventSystem.js';
 
 describe('EventSystem', () => {
   it('calls a registered listener when the event is emitted', () => {

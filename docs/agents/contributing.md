@@ -85,8 +85,8 @@ docker-compose run --rm edwin_dev bash
 
 | Modified folder | Commands to run inside the container |
 |-----------------|--------------------------------------|
-| `source/src/`   | `yarn coverage && yarn lint`         |
-| `source/tests/` | `yarn coverage`                      |
+| `source/lib/`   | `yarn coverage && yarn lint`         |
+| `source/spec/`  | `yarn coverage`                      |
 
 If a new package folder is added in the future, its corresponding test and lint commands must be run before merging any changes to that folder.
 
@@ -121,7 +121,7 @@ The only exception is the **entrypoint**:
 
 | Application | Entrypoint |
 |-------------|------------|
-| npm package (`source/`) | `source/src/index.js` |
+| npm package (`source/`) | `source/lib/index.js` |
 
 *Example:*
 ```jsx

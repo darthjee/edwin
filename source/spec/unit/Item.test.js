@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Item } from '../../src/entities/Item.js';
+import { Item } from '../../lib/entities/Item.js';
 
 describe('Item', () => {
   const makeItem = (overrides = {}) =>
