@@ -1,5 +1,5 @@
 /**
- * @fileoverview GameStateManager – wraps a Game instance and bridges it to
+ * @file GameStateManager – wraps a Game instance and bridges it to
  * React state via an event-driven approach.
  */
 

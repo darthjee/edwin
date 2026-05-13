@@ -1,5 +1,5 @@
 /**
- * @fileoverview useGame – primary React hook for accessing and interacting
+ * @file useGame – primary React hook for accessing and interacting
  * with the Edwin game engine.
  */
 

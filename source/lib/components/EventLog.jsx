@@ -1,5 +1,5 @@
 /**
- * @fileoverview EventLog – displays a chronological list of game events.
+ * @file EventLog – displays a chronological list of game events.
  */
 
 import PropTypes from 'prop-types';

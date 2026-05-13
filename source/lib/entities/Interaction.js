@@ -1,5 +1,5 @@
 /**
- * @fileoverview Interaction – models a structured exchange between the player
+ * @file Interaction – models a structured exchange between the player
  * and an NPC, such as a dialogue tree or a trade sequence.
  */
 

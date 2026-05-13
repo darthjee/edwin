@@ -1,5 +1,5 @@
 /**
- * @fileoverview Location – a spatial node in the game world that holds
+ * @file Location – a spatial node in the game world that holds
  * descriptions, connected paths, items, and NPCs.
  */
 

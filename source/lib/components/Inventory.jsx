@@ -1,5 +1,5 @@
 /**
- * @fileoverview Inventory – renders the player's item list.
+ * @file Inventory – renders the player's item list.
  */
 
 import PropTypes from 'prop-types';

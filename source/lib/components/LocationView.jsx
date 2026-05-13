@@ -1,5 +1,5 @@
 /**
- * @fileoverview LocationView – renders current location details including
+ * @file LocationView – renders current location details including
  * description, present items, and resident NPCs.
  */
 

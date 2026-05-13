@@ -1,17 +1,17 @@
 /**
- * @fileoverview Integration test – full game flow (world + save/load).
+ * @file Integration test – full game flow (world + save/load).
  *
  * Uses a jsdom environment via Vitest.
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
+import { GameStateManager } from '../../lib/core/GameStateManager.js';
+import { Action } from '../../lib/entities/Action.js';
 import { Game } from '../../lib/entities/Game.js';
+import { Interaction } from '../../lib/entities/Interaction.js';
+import { Item } from '../../lib/entities/Item.js';
 import { Location } from '../../lib/entities/Location.js';
 import { NPC } from '../../lib/entities/NPC.js';
-import { Item } from '../../lib/entities/Item.js';
-import { Interaction } from '../../lib/entities/Interaction.js';
-import { Action } from '../../lib/entities/Action.js';
-import { GameStateManager } from '../../lib/core/GameStateManager.js';
 
 function buildWorld() {
   const potion = new Item({

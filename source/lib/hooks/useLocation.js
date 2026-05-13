@@ -1,5 +1,5 @@
 /**
- * @fileoverview useLocation – React hook that provides current-location data
+ * @file useLocation – React hook that provides current-location data
  * and navigation helpers.
  */
 

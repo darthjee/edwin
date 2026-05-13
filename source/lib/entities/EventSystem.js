@@ -1,5 +1,5 @@
 /**
- * @fileoverview EventSystem – a lightweight pub/sub implementation for
+ * @file EventSystem – a lightweight pub/sub implementation for
  * asynchronous, decoupled communication between game entities.
  */
 

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Action – a discrete player-triggered operation with optional
+ * @file Action – a discrete player-triggered operation with optional
  * preconditions and effects.
  */
 

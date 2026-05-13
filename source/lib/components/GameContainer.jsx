@@ -1,23 +1,21 @@
 /**
- * @fileoverview GameContainer – root wrapper component for the Edwin engine.
+ * @file GameContainer – root wrapper component for the Edwin engine.
  *
  * This component wires together all child components (LocationView, Navigation,
  * ActionPanel, Inventory, EventLog, NPCDialog) using the useGame hook.
  */
 
-import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-
-import { useGame } from '../hooks/useGame.js';
-import { useLocation } from '../hooks/useLocation.js';
-import { useInventory } from '../hooks/useInventory.js';
-
+import { useState, useCallback } from 'react';
+import ActionPanel from './ActionPanel.jsx';
+import EventLog from './EventLog.jsx';
+import Inventory from './Inventory.jsx';
 import LocationView from './LocationView.jsx';
 import Navigation from './Navigation.jsx';
-import ActionPanel from './ActionPanel.jsx';
-import Inventory from './Inventory.jsx';
-import EventLog from './EventLog.jsx';
 import NPCDialog from './NPCDialog.jsx';
+import { useGame } from '../hooks/useGame.js';
+import { useInventory } from '../hooks/useInventory.js';
+import { useLocation } from '../hooks/useLocation.js';
 
 /**
  * Root game container. Pass the GameStateManager and optional action list.

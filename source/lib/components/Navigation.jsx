@@ -1,5 +1,5 @@
 /**
- * @fileoverview Navigation – renders directional movement controls for the
+ * @file Navigation – renders directional movement controls for the
  * current location's exits.
  */
 

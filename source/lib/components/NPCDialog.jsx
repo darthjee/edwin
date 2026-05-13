@@ -1,9 +1,9 @@
 /**
- * @fileoverview NPCDialog – a modal dialogue interface for NPC conversations.
+ * @file NPCDialog – a modal dialogue interface for NPC conversations.
  */
 
-import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useState, useCallback } from 'react';
 
 /**
  * Dialogue UI for interacting with an NPC.

@@ -1,5 +1,5 @@
 /**
- * @fileoverview ActionPanel – renders the list of available player actions.
+ * @file ActionPanel – renders the list of available player actions.
  */
 
 import PropTypes from 'prop-types';

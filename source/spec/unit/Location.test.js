@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Location } from '../../lib/entities/Location.js';
 import { Item } from '../../lib/entities/Item.js';
+import { Location } from '../../lib/entities/Location.js';
 import { NPC } from '../../lib/entities/NPC.js';
 
 describe('Location', () => {

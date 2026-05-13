@@ -1,5 +1,5 @@
 /**
- * @fileoverview useInventory – React hook that exposes the player's inventory
+ * @file useInventory – React hook that exposes the player's inventory
  * and item interaction helpers.
  */
 

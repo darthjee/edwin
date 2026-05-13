@@ -1,5 +1,5 @@
 /**
- * @fileoverview Game – the central hub that manages world initialization,
+ * @file Game – the central hub that manages world initialization,
  * global state, player inventory, and event coordination.
  */
 

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Edwin – Public API entry point.
+ * @file Edwin – Public API entry point.
  *
  * Import from this file to consume the Edwin RPG framework.
  *

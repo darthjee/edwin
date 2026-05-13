@@ -1,5 +1,5 @@
 /**
- * @fileoverview Shared JSDoc type definitions used across the Edwin framework.
+ * @file Shared JSDoc type definitions used across the Edwin framework.
  *
  * These are pure documentation types (no runtime code).
  */

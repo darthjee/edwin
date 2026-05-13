@@ -1,5 +1,5 @@
 /**
- * @fileoverview Item – a collectible or interactive in-game object.
+ * @file Item – a collectible or interactive in-game object.
  */
 
 /**

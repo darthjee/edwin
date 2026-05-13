@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { Game } from '../../lib/entities/Game.js';
-import { Location } from '../../lib/entities/Location.js';
 import { Item } from '../../lib/entities/Item.js';
+import { Location } from '../../lib/entities/Location.js';
 
 describe('Game', () => {
   let game;

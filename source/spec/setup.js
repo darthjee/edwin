@@ -1,5 +1,5 @@
 /**
- * @fileoverview Vitest / @testing-library setup file.
+ * @file Vitest / @testing-library setup file.
  * Imported automatically via vite.config.js `test.setupFiles`.
  */
 

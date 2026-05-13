@@ -1,5 +1,5 @@
 /**
- * @fileoverview NPC – a Non-Player Character with dialogue trees and
+ * @file NPC – a Non-Player Character with dialogue trees and
  * item inventories.
  */
 
