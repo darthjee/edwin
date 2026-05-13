@@ -16,7 +16,9 @@
     "lint_fix": "eslint lib spec --fix",
     "lint_report": "eslint . --format html --output-file report/eslint-report.html",
     "report": "jscpd lib spec --reporters console,html --output ./report/jscpd",
-    "format": "prettier --write \"lib/**/*.{js,jsx,css,md}\""
+    "format": "prettier --write \"lib/**/*.{js,jsx,css,md}\"",
+    "docs": "jsdoc -c jsdoc.json",
+    "check_docs": "jsdoc -c jsdoc.json --pedantic"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
@@ -44,7 +46,12 @@
     "prettier": "^3.2.5",
     "vite": "^5.2.8",
     "vitest": "^1.5.0",
-    "jscpd": "4.0.8"
+    "jscpd": "4.0.8",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "jsdoc": "^4.0.5",
+    "jsdoc-babel": "^0.5.0"
   },
   "keywords": [
     "rpg",
