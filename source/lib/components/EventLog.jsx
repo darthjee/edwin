@@ -9,7 +9,8 @@ import PropTypes from 'prop-types';
  *
  * @param {object} props
  * @param {Array<{text: string, timestamp: number}>} props.entries - Log entries.
- * @param {number} [props.maxEntries=50] - Maximum entries to display.
+ * @param {number} [props.maxEntries=50] - Maximum number of entries to display (newest first).
+ * @returns {JSX.Element}
  */
 function EventLog({ entries, maxEntries = 50 }) {
   const visible = entries.slice(-maxEntries).reverse();

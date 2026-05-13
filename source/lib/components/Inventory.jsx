@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
  *
  * @param {object} props
  * @param {Array<import('../types/index.js').ItemData>} props.items - Inventory items.
- * @param {Function} [props.onDrop] - Called with itemId when player drops an item.
- * @param {Function} [props.onUse] - Called with itemId when player uses an item.
+ * @param {Function} [props.onDrop] - Called with itemId when the player drops an item.
+ * @param {Function} [props.onUse] - Called with itemId when the player uses an item.
+ * @returns {JSX.Element}
  */
 function Inventory({ items, onDrop, onUse }) {
   return (

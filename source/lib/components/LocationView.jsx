@@ -9,9 +9,10 @@ import PropTypes from 'prop-types';
  * Displays information about the player's current location.
  *
  * @param {object} props
- * @param {object} props.location - Serialized Location object.
- * @param {Function} [props.onPickUp] - Called with item when player picks up.
- * @param {Function} [props.onTalkTo] - Called with npc when player initiates dialogue.
+ * @param {import('../types/index.js').LocationData | null} props.location - Serialized Location object.
+ * @param {Function} [props.onPickUp] - Called with the item data when the player picks up an item.
+ * @param {Function} [props.onTalkTo] - Called with the npc data when the player initiates dialogue.
+ * @returns {JSX.Element}
  */
 function LocationView({ location, onPickUp, onTalkTo }) {
   if (!location) {

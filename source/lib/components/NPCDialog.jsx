@@ -9,10 +9,11 @@ import { useState, useCallback } from 'react';
  * Dialogue UI for interacting with an NPC.
  *
  * @param {object} props
- * @param {object} props.npc - The NPC being spoken to (serialized).
- * @param {object | null} props.currentStep - Current dialogue step.
- * @param {Function} props.onChoose - Called with optionIndex when player picks.
- * @param {Function} props.onClose - Called when dialogue ends or is dismissed.
+ * @param {{ id: string, name: string, description?: string }} props.npc - The NPC being spoken to (serialized).
+ * @param {import('../types/index.js').InteractionStep | null} props.currentStep - Current dialogue step, or null when the conversation has ended.
+ * @param {Function} props.onChoose - Called with the zero-based option index when the player selects a choice.
+ * @param {Function} props.onClose - Called when the dialogue is dismissed or completed.
+ * @returns {JSX.Element | null} Null when there is no active NPC or the dialog is closing.
  */
 function NPCDialog({ npc, currentStep, onChoose, onClose }) {
   const [isClosing, setIsClosing] = useState(false);

@@ -8,8 +8,9 @@ import PropTypes from 'prop-types';
  * Displays available actions as clickable buttons.
  *
  * @param {object} props
- * @param {Array<{id: string, label: string, description?: string}>} props.actions
- * @param {Function} props.onAction - Called with action id.
+ * @param {Array<{id: string, label: string, description?: string}>} props.actions - List of available actions.
+ * @param {Function} props.onAction - Called with the action id when a button is clicked.
+ * @returns {JSX.Element}
  */
 function ActionPanel({ actions, onAction }) {
   if (actions.length === 0) {

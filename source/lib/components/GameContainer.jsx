@@ -21,8 +21,9 @@ import { useLocation } from '../hooks/useLocation.js';
  * Root game container. Pass the GameStateManager and optional action list.
  *
  * @param {object} props
- * @param {import('../core/GameStateManager.js').GameStateManager} props.manager
- * @param {Array<import('../entities/Action.js').Action>} [props.actions=[]]
+ * @param {import('../core/GameStateManager.js').GameStateManager} props.manager - The active GameStateManager instance.
+ * @param {Array<import('../entities/Action.js').Action>} [props.actions=[]] - Player actions to evaluate and display.
+ * @returns {JSX.Element}
  */
 function GameContainer({ manager, actions = [] }) {
   const { state, moveTo, pickUpItem, dropItem } = useGame(manager);

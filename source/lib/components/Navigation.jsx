@@ -20,8 +20,9 @@ const DIRECTION_LABELS = {
  * Renders navigation buttons for available exits.
  *
  * @param {object} props
- * @param {object} props.paths - Map of direction → locationId.
- * @param {Function} props.onNavigate - Called with a direction string.
+ * @param {Object.<string, string>} props.paths - Map of direction → locationId.
+ * @param {Function} props.onNavigate - Called with the direction string when the player moves.
+ * @returns {JSX.Element}
  */
 function Navigation({ paths, onNavigate }) {
   const exits = Object.keys(paths);
