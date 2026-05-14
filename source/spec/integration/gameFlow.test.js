@@ -65,10 +65,10 @@ function buildWorld() {
 }
 
 describe('Full game flow', () => {
-  let game, potion, guard;
+  let game, guard;
 
   beforeEach(() => {
-    ({ game, potion, guard } = buildWorld());
+    ({ game, guard } = buildWorld());
     game.start();
   });
 
