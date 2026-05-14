@@ -22,6 +22,8 @@ The components in `source/components` currently mix HTML rendering and behavior 
 - Extract helper classes into `source/lib/components/helpers`.
 - Extract controller classes into `source/lib/components/controllers`.
 - Keep the React component as the thin rendering layer.
+- When JSX/HTML appears behind a conditional (e.g., `someCondition && <JSX />`), extract that JSX into its own method to keep render logic minimal.
+- Aim for the smallest possible methods — each method should do exactly one thing.
 - Update `docs/agents` to document the new folder structure and conventions.
 
 ## Benefits
