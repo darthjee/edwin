@@ -4,7 +4,6 @@
  */
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { GameStateManager } from '../core/GameStateManager.js';
 
 /**
  * Provides game state and action dispatchers to a React component tree.

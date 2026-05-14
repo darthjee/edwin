@@ -3,8 +3,6 @@
  * item inventories.
  */
 
-import { Interaction } from './Interaction.js';
-
 /**
  * Represents a non-player character the player can interact with.
  *
