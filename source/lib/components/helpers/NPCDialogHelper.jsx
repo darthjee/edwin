@@ -4,12 +4,12 @@ class NPCDialogHelper {
   }
 
   renderDescription(npc) {
-    if (!npc.description) return null;
+    if (!npc.description) {return null;}
     return <p className="text-muted fst-italic small mb-3">{npc.description}</p>;
   }
 
   renderOptions(currentStep) {
-    if (!currentStep.options || !currentStep.options.length) return null;
+    if (!currentStep.options || !currentStep.options.length) {return null;}
     return (
       <div className="npc-dialog__options d-flex flex-column gap-2 mt-3">
         {currentStep.options.map((option, idx) => (

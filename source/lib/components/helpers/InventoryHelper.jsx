@@ -5,12 +5,12 @@ class InventoryHelper {
   }
 
   renderItemDescription(item) {
-    if (!item.description) return null;
+    if (!item.description) {return null;}
     return <p className="mb-0 small text-muted">{item.description}</p>;
   }
 
   renderUseButton(item) {
-    if (!item.isUsable || !this.onUse) return null;
+    if (!item.isUsable || !this.onUse) {return null;}
     return (
       <button
         type="button"
@@ -23,7 +23,7 @@ class InventoryHelper {
   }
 
   renderDropButton(item) {
-    if (!this.onDrop) return null;
+    if (!this.onDrop) {return null;}
     return (
       <button
         type="button"

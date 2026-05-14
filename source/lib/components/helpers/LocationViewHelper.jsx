@@ -5,12 +5,12 @@ class LocationViewHelper {
   }
 
   renderItemDescription(item) {
-    if (!item.description) return null;
+    if (!item.description) {return null;}
     return <span className="ms-2 text-muted small">{item.description}</span>;
   }
 
   renderPickUpButton(item) {
-    if (!item.isPickable || !this.onPickUp) return null;
+    if (!item.isPickable || !this.onPickUp) {return null;}
     return (
       <button
         type="button"
@@ -23,12 +23,12 @@ class LocationViewHelper {
   }
 
   renderNPCDescription(npc) {
-    if (!npc.description) return null;
+    if (!npc.description) {return null;}
     return <span className="ms-2 text-muted small">{npc.description}</span>;
   }
 
   renderTalkButton(npc) {
-    if (!this.onTalkTo) return null;
+    if (!this.onTalkTo) {return null;}
     return (
       <button
         type="button"
@@ -41,7 +41,7 @@ class LocationViewHelper {
   }
 
   renderItems(location) {
-    if (!location.items || !location.items.length) return null;
+    if (!location.items || !location.items.length) {return null;}
     return (
       <div className="location__items mt-3">
         <h6>Items here:</h6>
@@ -64,7 +64,7 @@ class LocationViewHelper {
   }
 
   renderNPCs(location) {
-    if (!location.npcs || !location.npcs.length) return null;
+    if (!location.npcs || !location.npcs.length) {return null;}
     return (
       <div className="location__npcs mt-3">
         <h6>People here:</h6>

@@ -12,7 +12,7 @@ class GameContainerController {
 
   executeAction(actionId, state) {
     const action = this.actions.find((a) => a.id === actionId);
-    if (!action) return;
+    if (!action) {return;}
     try {
       action.execute(state);
     } catch (err) {
@@ -22,7 +22,7 @@ class GameContainerController {
 
   startDialogue(npcData) {
     const liveNPC = this.manager.game.currentLocation?.npcs.find((n) => n.id === npcData.id);
-    if (!liveNPC) return null;
+    if (!liveNPC) {return null;}
     return { npc: liveNPC, step: liveNPC.startDialogue() };
   }
 
@@ -32,7 +32,7 @@ class GameContainerController {
 
   pickUpItem(itemData, pickUpCallback) {
     const liveItem = this.manager.game.currentLocation?.items.find((i) => i.id === itemData.id);
-    if (!liveItem) return;
+    if (!liveItem) {return;}
     this.manager.game.currentLocation.removeItem(liveItem.id);
     pickUpCallback(liveItem);
   }

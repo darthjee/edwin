@@ -37,14 +37,14 @@ function GameContainer({ manager, actions = [] }) {
 
   const handleTalkTo = useCallback((npcData) => {
     const result = controller.startDialogue(npcData);
-    if (!result) return;
+    if (!result) {return;}
     setActiveNPC(result.npc);
     setDialogStep(result.step);
   }, [manager]);
 
   const handleDialogChoose = useCallback(
     (optionIndex) => {
-      if (!activeNPC) return;
+      if (!activeNPC) {return;}
       setDialogStep(controller.advanceDialogue(activeNPC, optionIndex, state));
     },
     [activeNPC, state]

@@ -70,6 +70,7 @@ export default [
       semi: ['error', 'always'],
 
       // Best practices
+      curly: ['error', 'all'],
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       eqeqeq: ['error', 'always'],

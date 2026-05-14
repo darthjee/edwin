@@ -16,7 +16,7 @@ function NPCDialog({ npc, currentStep, onChoose, onClose }) {
     onClose();
   }, [onClose]);
 
-  if (!npc || isClosing) return null;
+  if (!npc || isClosing) {return null;}
 
   const helper = new NPCDialogHelper(handleChoose);
 
