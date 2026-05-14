@@ -7,12 +7,12 @@
 
 import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
+import { GameContainerController } from './controllers/GameContainerController.js';
 import EventLog from './EventLog.jsx';
+import { GameContainerHelper } from './helpers/GameContainerHelper.jsx';
 import Inventory from './Inventory.jsx';
 import LocationView from './LocationView.jsx';
 import Navigation from './Navigation.jsx';
-import { GameContainerHelper } from './helpers/GameContainerHelper.jsx';
-import { GameContainerController } from './controllers/GameContainerController.js';
 import { useGame } from '../hooks/useGame.js';
 import { useInventory } from '../hooks/useInventory.js';
 import { useLocation } from '../hooks/useLocation.js';
