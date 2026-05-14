@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
 import { renderHook } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import { useInventory } from '../../lib/hooks/useInventory.js';
 
 const makeState = (items = []) => ({ playerInventory: items });

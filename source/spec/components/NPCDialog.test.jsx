@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import NPCDialog from '../../lib/components/NPCDialog.jsx';
 
 const npc = { id: 'guard', name: 'Guard', description: 'A stern soldier.' };

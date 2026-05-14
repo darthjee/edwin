@@ -1,13 +1,13 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import GameContainer from '../../lib/components/GameContainer.jsx';
+import { GameStateManager } from '../../lib/core/GameStateManager.js';
+import { Action } from '../../lib/entities/Action.js';
 import { Game } from '../../lib/entities/Game.js';
+import { Interaction } from '../../lib/entities/Interaction.js';
 import { Item } from '../../lib/entities/Item.js';
 import { Location } from '../../lib/entities/Location.js';
 import { NPC } from '../../lib/entities/NPC.js';
-import { Action } from '../../lib/entities/Action.js';
-import { Interaction } from '../../lib/entities/Interaction.js';
-import { GameStateManager } from '../../lib/core/GameStateManager.js';
 
 function buildManager(opts = {}) {
   const game = new Game({ id: 'gc_test', title: 'GC Test' });

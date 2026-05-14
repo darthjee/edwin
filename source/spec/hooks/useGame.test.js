@@ -1,10 +1,10 @@
-import { describe, it, expect, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useGame } from '../../lib/hooks/useGame.js';
+import { describe, it, expect, vi } from 'vitest';
+import { GameStateManager } from '../../lib/core/GameStateManager.js';
 import { Game } from '../../lib/entities/Game.js';
 import { Item } from '../../lib/entities/Item.js';
 import { Location } from '../../lib/entities/Location.js';
-import { GameStateManager } from '../../lib/core/GameStateManager.js';
+import { useGame } from '../../lib/hooks/useGame.js';
 
 function buildManager() {
   const game = new Game({ id: 'hook_game', title: 'Hook Game' });

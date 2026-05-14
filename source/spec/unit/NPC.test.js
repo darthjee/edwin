@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { NPC } from '../../lib/entities/NPC.js';
-import { Item } from '../../lib/entities/Item.js';
 import { Interaction } from '../../lib/entities/Interaction.js';
+import { Item } from '../../lib/entities/Item.js';
+import { NPC } from '../../lib/entities/NPC.js';
 
 const makeInteraction = () =>
   new Interaction({
