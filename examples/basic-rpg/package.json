@@ -7,6 +7,9 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
     "build": "vite build",
+    "spec": "vitest run",
+    "test": "vitest run --coverage",
+    "coverage": "vitest run --coverage",
     "lint": "eslint .",
     "lint_fix": "eslint . --fix",
     "lint_report": "eslint . --format html --output-file report/eslint-report.html"
@@ -19,6 +22,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.5.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@eslint/js": "^9.17.0",
     "eslint": "^9.17.0",
     "eslint-plugin-complexity": "^1.0.2",
@@ -29,6 +34,8 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-sort-class-members": "^1.21.0",
     "globals": "^15.14.0",
-    "vite": "^5.2.8"
+    "jsdom": "^24.0.0",
+    "vite": "^5.2.8",
+    "vitest": "^1.5.0"
   }
 }
