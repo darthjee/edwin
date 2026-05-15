@@ -20,7 +20,7 @@ workflows:
             tags:
               only: /.*/
       - coverage-final:
-          requires: [jasmine]
+          requires: [jasmine, basic_example_jasmine, advanced_example_jasmine]
           filters:
             tags:
               only: /.*/
