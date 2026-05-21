@@ -34,7 +34,18 @@
 make dev
 ```
 
-This opens a shell inside the development container where you can run tests, lint, and build commands.
+This opens a shell inside the development container. From there:
+
+```bash
+# Run tests with coverage report
+yarn coverage
+
+# Run the linter
+yarn lint
+
+# Fix lint issues automatically
+yarn lint_fix
+```
 
 ---
 
