@@ -8,6 +8,7 @@ const village = new Location({
   description:
     'A quiet hamlet nestled between rolling hills. Smoke rises from chimneys, ' +
     'and merchants hawk their goods in the narrow lane.',
+  image: 'https://placehold.co/800x300',
   paths: { north: { target: 'citadel_gate', label: '↑ North' }, east: { target: 'forest_edge', label: '→ East' } },
   npcs: [merchant],
 });
@@ -18,6 +19,7 @@ const forestEdge = new Location({
   description:
     'Tall oaks press close on either side. Shafts of morning light pierce the canopy. ' +
     'A healing herb grows at the base of an old stump.',
+  image: 'https://placehold.co/800x300',
   paths: { west: { target: 'village', label: '← West' }, deeper: { target: 'dark_forest', label: 'Deeper' } },
   items: [healingHerb, rustySword],
 });
@@ -27,6 +29,7 @@ const darkForest = new Location({
   name: 'Dark Forest',
   description:
     'The trees close in and the light dies. Strange sounds echo in the distance.',
+  image: 'https://placehold.co/800x300',
   paths: { back: { target: 'forest_edge', label: 'Back' } },
 });
 
@@ -36,6 +39,7 @@ const citadelGate = new Location({
   description:
     'A massive iron gate bars entry to the ancient citadel. A guard stands watch, ' +
     'hand resting on the pommel of his sword.',
+  image: 'https://placehold.co/800x300',
   paths: { south: { target: 'village', label: '↓ South' }, inside: { target: 'vault', label: 'Inside' } },
   npcs: [guard],
 });
@@ -48,6 +52,7 @@ const vault = new Location({
   description:
     'A circular chamber lit by silver torches. Ancient runes cover the walls. ' +
     'A pedestal at the centre holds a glowing artefact.',
+  image: 'https://placehold.co/800x300',
   paths: { out: { target: 'citadel_gate', label: '⤴ Out' } },
 });
 
