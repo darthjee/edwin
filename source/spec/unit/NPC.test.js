@@ -66,6 +66,17 @@ describe('NPC', () => {
     expect(npc.inventory[0]).toBe(item);
   });
 
+  it('inventory getter returns a copy', () => {
+    const npc = makeNPC();
+    const item = new Item({ id: 'coin', name: 'Coin' });
+    npc.addItem(item);
+    const inventory = npc.inventory;
+
+    inventory.pop();
+
+    expect(npc.inventory).toHaveLength(1);
+  });
+
   it('removeItem() returns the item when found', () => {
     const npc = makeNPC();
     const item = new Item({ id: 'coin', name: 'Coin' });

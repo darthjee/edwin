@@ -109,4 +109,13 @@ describe('Interaction', () => {
     });
     expect(interaction.currentStep).toBeNull();
   });
+
+  it('steps getter returns a copy', () => {
+    const interaction = makeInteraction();
+    const steps = interaction.steps;
+
+    steps.pop();
+
+    expect(interaction.steps).toHaveLength(2);
+  });
 });

@@ -61,11 +61,11 @@ export class NPC {
   }
 
   get inventory() {
-    return this._inventory;
+    return [...this._inventory];
   }
 
   get properties() {
-    return this._properties;
+    return { ...this._properties };
   }
 
   get isHostile() {

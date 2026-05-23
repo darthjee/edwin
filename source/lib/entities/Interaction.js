@@ -47,7 +47,7 @@ export class Interaction {
   }
 
   get steps() {
-    return this._steps;
+    return [...this._steps];
   }
 
   get isComplete() {

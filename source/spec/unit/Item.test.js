@@ -50,4 +50,13 @@ describe('Item', () => {
     expect(json.properties.dmg).toBe(5);
     expect(json.state).toBe('world');
   });
+
+  it('properties getter returns a copy', () => {
+    const item = makeItem({ properties: { dmg: 5 } });
+    const properties = item.properties;
+
+    properties.dmg = 99;
+
+    expect(item.properties.dmg).toBe(5);
+  });
 });
