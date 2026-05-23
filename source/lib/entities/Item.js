@@ -27,15 +27,43 @@ export class Item {
     if (!id) { throw new Error('Item requires an id.'); }
     if (!name) { throw new Error('Item requires a name.'); }
 
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.isPickable = isPickable;
-    this.isUsable = isUsable;
-    this.properties = { ...properties };
+    this._id = id;
+    this._name = name;
+    this._description = description;
+    this._isPickable = isPickable;
+    this._isUsable = isUsable;
+    this._properties = { ...properties };
 
     /** @type {'world' | 'inventory' | 'equipped' | 'discarded'} */
-    this.state = 'world';
+    this._state = 'world';
+  }
+
+  get id() {
+    return this._id;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get description() {
+    return this._description;
+  }
+
+  get isPickable() {
+    return this._isPickable;
+  }
+
+  get isUsable() {
+    return this._isUsable;
+  }
+
+  get properties() {
+    return this._properties;
+  }
+
+  get state() {
+    return this._state;
   }
 
   /**
@@ -48,7 +76,7 @@ export class Item {
     if (!valid.includes(newState)) {
       throw new Error(`Invalid item state: ${newState}`);
     }
-    this.state = newState;
+    this._state = newState;
   }
 
   /**
@@ -72,13 +100,13 @@ export class Item {
    */
   toJSON() {
     return {
-      id: this.id,
-      name: this.name,
-      description: this.description,
-      isPickable: this.isPickable,
-      isUsable: this.isUsable,
-      properties: { ...this.properties },
-      state: this.state,
+      id: this._id,
+      name: this._name,
+      description: this._description,
+      isPickable: this._isPickable,
+      isUsable: this._isUsable,
+      properties: { ...this._properties },
+      state: this._state,
     };
   }
 }
