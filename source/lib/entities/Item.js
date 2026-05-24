@@ -81,7 +81,7 @@ export class Item {
   }
 
   get properties() {
-    return this._properties;
+    return { ...this._properties };
   }
 
   set properties(properties) {
