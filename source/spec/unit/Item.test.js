@@ -29,6 +29,12 @@ describe('Item', () => {
     expect(() => item.setState('flying')).toThrow('Invalid item state');
   });
 
+  it('state setter changes the state', () => {
+    const item = makeItem();
+    item.state = 'equipped';
+    expect(item.state).toBe('equipped');
+  });
+
   it('use() returns false when isUsable is false', () => {
     const item = makeItem({ isUsable: false });
     expect(item.use()).toBe(false);
@@ -58,5 +64,22 @@ describe('Item', () => {
     properties.dmg = 99;
 
     expect(item.properties.dmg).toBe(5);
+  });
+
+  it('setters update public fields', () => {
+    const item = makeItem();
+    item.id = 'axe';
+    item.name = 'Axe';
+    item.description = 'Heavy axe';
+    item.isPickable = false;
+    item.isUsable = true;
+    item.properties = { dmg: 12 };
+
+    expect(item.id).toBe('axe');
+    expect(item.name).toBe('Axe');
+    expect(item.description).toBe('Heavy axe');
+    expect(item.isPickable).toBe(false);
+    expect(item.isUsable).toBe(true);
+    expect(item.properties).toEqual({ dmg: 12 });
   });
 });

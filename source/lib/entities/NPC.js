@@ -48,28 +48,58 @@ export class NPC {
     return this._id;
   }
 
+  set id(id) {
+    if (!id) { throw new Error('NPC requires an id.'); }
+    this._id = id;
+  }
+
   get name() {
     return this._name;
+  }
+
+  set name(name) {
+    if (!name) { throw new Error('NPC requires a name.'); }
+    this._name = name;
   }
 
   get description() {
     return this._description;
   }
 
+  set description(description) {
+    this._description = description ?? '';
+  }
+
   get dialogue() {
     return this._dialogue;
+  }
+
+  set dialogue(dialogue) {
+    this._dialogue = dialogue;
   }
 
   get inventory() {
     return [...this._inventory];
   }
 
+  set inventory(inventory) {
+    this._inventory = Array.isArray(inventory) ? [...inventory] : [];
+  }
+
   get properties() {
     return { ...this._properties };
   }
 
+  set properties(properties) {
+    this._properties = { ...(properties ?? {}) };
+  }
+
   get isHostile() {
     return this._isHostile;
+  }
+
+  set isHostile(isHostile) {
+    this._isHostile = isHostile;
   }
 
   /**

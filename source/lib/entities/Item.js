@@ -42,28 +42,58 @@ export class Item {
     return this._id;
   }
 
+  set id(id) {
+    if (!id) { throw new Error('Item requires an id.'); }
+    this._id = id;
+  }
+
   get name() {
     return this._name;
+  }
+
+  set name(name) {
+    if (!name) { throw new Error('Item requires a name.'); }
+    this._name = name;
   }
 
   get description() {
     return this._description;
   }
 
+  set description(description) {
+    this._description = description ?? '';
+  }
+
   get isPickable() {
     return this._isPickable;
+  }
+
+  set isPickable(isPickable) {
+    this._isPickable = isPickable;
   }
 
   get isUsable() {
     return this._isUsable;
   }
 
+  set isUsable(isUsable) {
+    this._isUsable = isUsable;
+  }
+
   get properties() {
     return { ...this._properties };
   }
 
+  set properties(properties) {
+    this._properties = { ...(properties ?? {}) };
+  }
+
   get state() {
     return this._state;
+  }
+
+  set state(state) {
+    this.setState(state);
   }
 
   /**

@@ -118,4 +118,21 @@ describe('Interaction', () => {
 
     expect(interaction.steps).toHaveLength(2);
   });
+
+  it('setters update public fields', () => {
+    const interaction = makeInteraction();
+    const steps = [
+      { id: 'single', text: 'Only step', options: [{ label: 'Exit', next: null }] },
+    ];
+
+    interaction.id = 'renamed';
+    interaction.steps = steps;
+    expect(interaction.currentStep.id).toBe('single');
+    interaction.isComplete = true;
+
+    expect(interaction.id).toBe('renamed');
+    expect(interaction.steps).toEqual(steps);
+    expect(interaction.isComplete).toBe(true);
+    expect(interaction.currentStep).toBeNull();
+  });
 });

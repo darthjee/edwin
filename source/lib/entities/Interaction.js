@@ -46,12 +46,32 @@ export class Interaction {
     return this._id;
   }
 
+  set id(id) {
+    if (!id) { throw new Error('Interaction requires an id.'); }
+    this._id = id;
+  }
+
   get steps() {
     return [...this._steps];
   }
 
+  set steps(steps) {
+    if (!Array.isArray(steps) || steps.length === 0) {
+      throw new Error('Interaction requires at least one step.');
+    }
+    this._steps = [...steps];
+    this._stepMap = new Map(this._steps.map((step) => [step.id, step]));
+    if (!this._stepMap.has(this._currentStepId)) {
+      this._currentStepId = this._steps[0].id;
+    }
+  }
+
   get isComplete() {
     return this._isComplete;
+  }
+
+  set isComplete(isComplete) {
+    this._isComplete = isComplete;
   }
 
   /** @returns {object | null} The current step object, or null if finished. */
