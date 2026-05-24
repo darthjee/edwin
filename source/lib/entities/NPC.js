@@ -87,7 +87,7 @@ export class NPC {
   }
 
   get properties() {
-    return { ...this._properties };
+    return this._properties;
   }
 
   set properties(properties) {
