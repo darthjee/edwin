@@ -1,20 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { existsSync } from 'fs';
-
-const dockerMountedEdwinPath = resolve(__dirname, 'edwin/lib/index.js');
-const localRepoEdwinPath = resolve(__dirname, '../../source/lib/index.js');
-const edwinPath = existsSync(dockerMountedEdwinPath) ? dockerMountedEdwinPath : localRepoEdwinPath;
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      edwin: edwinPath,
+      edwin: resolve(__dirname, 'edwin/lib/index.js'),
     },
   },
   test: {
+    include: ['spec/**/*.test.js'],
     globals: true,
     environment: 'jsdom',
     setupFiles: './spec/setup.js',
