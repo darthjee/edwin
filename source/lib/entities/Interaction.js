@@ -61,9 +61,8 @@ export class Interaction {
     }
     this._steps = [...steps];
     this._stepMap = new Map(this._steps.map((step) => [step.id, step]));
-    if (!this._stepMap.has(this._currentStepId)) {
-      this._currentStepId = this._steps[0].id;
-    }
+    this._currentStepId = this._steps[0].id;
+    this._isComplete = false;
   }
 
   get isComplete() {

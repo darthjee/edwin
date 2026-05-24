@@ -126,12 +126,25 @@ describe('Interaction', () => {
     ];
 
     interaction.id = 'renamed';
-    interaction.steps = steps;
-    expect(interaction.currentStep.id).toBe('single');
     interaction.isComplete = true;
+    interaction.steps = steps;
 
     expect(interaction.id).toBe('renamed');
     expect(interaction.steps).toEqual(steps);
+    expect(interaction.currentStep.id).toBe('single');
+    expect(interaction.isComplete).toBe(false);
+  });
+
+  it('steps setter throws for empty list', () => {
+    const interaction = makeInteraction();
+    expect(() => {
+      interaction.steps = [];
+    }).toThrow('Interaction requires at least one step.');
+  });
+
+  it('isComplete setter updates completion flag', () => {
+    const interaction = makeInteraction();
+    interaction.isComplete = true;
     expect(interaction.isComplete).toBe(true);
     expect(interaction.currentStep).toBeNull();
   });
