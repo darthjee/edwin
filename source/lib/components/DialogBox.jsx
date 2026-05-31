@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import { useEffect, useMemo, useState } from 'react';
-import silhouettePortrait from '../assets/silhouette.svg';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { DialogBoxController } from './controllers/DialogBoxController.js';
+import DialogNavigation from './DialogNavigation.jsx';
+import DialogSpeaker from './DialogSpeaker.jsx';
 
 function DialogBox({ dialog, onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,13 +15,17 @@ function DialogBox({ dialog, onClose }) {
     setActiveIndex(0);
   }, [dialog]);
 
-  const portraitSrc = useMemo(
-    () => speaker?.portraitUrl || silhouettePortrait,
-    [speaker]
-  );
   const controller = useMemo(
     () => new DialogBoxController(onClose, setActiveIndex),
     [onClose]
+  );
+  const handlePrevious = useCallback(
+    () => controller.previousMessage(),
+    [controller]
+  );
+  const handleNext = useCallback(
+    () => controller.nextMessage(activeIndex, messages.length),
+    [activeIndex, controller, messages.length]
   );
 
   if (!messages.length || !activeMessage) {return null;}
@@ -29,29 +34,17 @@ function DialogBox({ dialog, onClose }) {
     <div className="edwin-dialog-box card mt-3" role="dialog" aria-modal="false">
       <div className="card-body">
         <div className="dialog-box__layout">
-          {speaker && (
-            <div className="dialog-box__speaker">
-              <img src={portraitSrc} alt={speaker.name} className="dialog-box__portrait" />
-              <strong className="small text-center">{speaker.name}</strong>
-            </div>
-          )}
+          <DialogSpeaker speaker={speaker} />
           <div className="dialog-box__content">
             <p className="dialog-box__text mb-0">{activeMessage.text}</p>
           </div>
         </div>
 
-        <div className="d-flex justify-content-between mt-3">
-          <div>
-            {activeIndex > 0 && (
-              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => controller.previousMessage()}>
-                Previous
-              </button>
-            )}
-          </div>
-          <button type="button" className="btn btn-sm btn-primary" onClick={() => controller.nextMessage(activeIndex, messages.length)}>
-            Next
-          </button>
-        </div>
+        <DialogNavigation
+          showPrevious={activeIndex > 0}
+          onPrevious={handlePrevious}
+          onNext={handleNext}
+        />
       </div>
     </div>
   );
