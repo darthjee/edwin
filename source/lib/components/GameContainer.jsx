@@ -82,9 +82,9 @@ function GameContainer({ manager, actions = [] }) {
             </div>
           </div>
 
-          {!hasActiveDialog && helper.renderNavigationPanel(location?.paths ?? {}, navigate)}
+          {helper.renderNavigationPanel(hasActiveDialog, location?.paths ?? {}, navigate)}
 
-          {!hasActiveDialog && helper.renderActionPanel(availableActions, handleAction)}
+          {helper.renderActionPanel(hasActiveDialog, availableActions, handleAction)}
         </main>
 
         <aside className="col-md-4">

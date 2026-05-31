@@ -7,7 +7,7 @@ describe('GameContainerHelper', () => {
     it('renders the ActionPanel when actions are available', () => {
       const helper = new GameContainerHelper();
       const actions = [{ id: 'a1', label: 'Shout' }];
-      render(<div>{helper.renderActionPanel(actions, vi.fn())}</div>);
+      render(<div>{helper.renderActionPanel(false, actions, vi.fn())}</div>);
       expect(screen.getByText('Shout')).toBeInTheDocument();
     });
 
@@ -15,14 +15,20 @@ describe('GameContainerHelper', () => {
       const onAction = vi.fn();
       const helper = new GameContainerHelper();
       const actions = [{ id: 'a1', label: 'Shout' }];
-      render(<div>{helper.renderActionPanel(actions, onAction)}</div>);
+      render(<div>{helper.renderActionPanel(false, actions, onAction)}</div>);
       fireEvent.click(screen.getByText('Shout'));
       expect(onAction).toHaveBeenCalledWith('a1');
     });
 
     it('returns null when there are no actions', () => {
       const helper = new GameContainerHelper();
-      expect(helper.renderActionPanel([], vi.fn())).toBeNull();
+      expect(helper.renderActionPanel(false, [], vi.fn())).toBeNull();
+    });
+
+    it('returns null when there is an active dialog', () => {
+      const helper = new GameContainerHelper();
+      const actions = [{ id: 'a1', label: 'Shout' }];
+      expect(helper.renderActionPanel(true, actions, vi.fn())).toBeNull();
     });
   });
 
@@ -32,7 +38,7 @@ describe('GameContainerHelper', () => {
 
       render(
         <div>
-          {helper.renderNavigationPanel({
+          {helper.renderNavigationPanel(false, {
             north: { target: 'square', label: 'Town Square' },
           }, vi.fn())}
         </div>
@@ -48,7 +54,7 @@ describe('GameContainerHelper', () => {
 
       render(
         <div>
-          {helper.renderNavigationPanel({
+          {helper.renderNavigationPanel(false, {
             north: { target: 'square', label: 'Town Square' },
           }, onNavigate)}
         </div>
@@ -56,6 +62,11 @@ describe('GameContainerHelper', () => {
 
       fireEvent.click(screen.getByText('Town Square'));
       expect(onNavigate).toHaveBeenCalledWith('north');
+    });
+
+    it('returns null when there is an active dialog', () => {
+      const helper = new GameContainerHelper();
+      expect(helper.renderNavigationPanel(true, {}, vi.fn())).toBeNull();
     });
   });
 

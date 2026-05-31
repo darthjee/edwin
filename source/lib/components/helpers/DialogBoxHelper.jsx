@@ -1,6 +1,6 @@
+import DialogMessage from '../DialogMessage.jsx';
 import DialogNavigation from '../DialogNavigation.jsx';
 import DialogSpeaker from '../DialogSpeaker.jsx';
-import DialogMessage from '../DialogMessage.jsx';
 
 class DialogBoxHelper {
   static renderDialog({ activeMessage, speaker, showPrevious, onPrevious, onNext }) {
@@ -9,9 +9,7 @@ class DialogBoxHelper {
         <div className="card-body">
           <div className="dialog-box__layout">
             <DialogSpeaker speaker={speaker} />
-            <div className="dialog-box__content">
-              <DialogMessage text={activeMessage.text} />
-            </div>
+            <DialogMessage text={activeMessage.text} />
           </div>
 
           <DialogNavigation
