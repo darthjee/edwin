@@ -3,6 +3,8 @@
  * item inventories.
  */
 
+import { Character } from './Character.js';
+
 /**
  * Represents a non-player character the player can interact with.
  *
@@ -14,7 +16,7 @@
  *   dialogue: greetInteraction,
  * });
  */
-export class NPC {
+export class NPC extends Character {
   /**
    * @param {object} config
    * @param {string} config.id - Unique identifier.
@@ -23,6 +25,7 @@ export class NPC {
    * @param {Interaction | null} [config.dialogue=null] - Primary dialogue tree.
    * @param {Array<import('./Item.js').Item>} [config.inventory=[]] - Items the NPC carries.
    * @param {object} [config.properties={}] - Arbitrary metadata.
+   * @param {string | null} [config.portraitUrl=null] - Portrait URL used for dialog rendering.
    */
   constructor({
     id,
@@ -31,12 +34,11 @@ export class NPC {
     dialogue = null,
     inventory = [],
     properties = {},
+    portraitUrl = null,
   }) {
     if (!id) { throw new Error('NPC requires an id.'); }
     if (!name) { throw new Error('NPC requires a name.'); }
-
-    this._id = id;
-    this._name = name;
+    super({ id, name, portraitUrl });
     this._description = description;
     this._dialogue = dialogue;
     this._inventory = [...inventory];
@@ -45,21 +47,21 @@ export class NPC {
   }
 
   get id() {
-    return this._id;
+    return super.id;
   }
 
   set id(id) {
     if (!id) { throw new Error('NPC requires an id.'); }
-    this._id = id;
+    super.id = id;
   }
 
   get name() {
-    return this._name;
+    return super.name;
   }
 
   set name(name) {
     if (!name) { throw new Error('NPC requires a name.'); }
-    this._name = name;
+    super.name = name;
   }
 
   get description() {
@@ -155,6 +157,7 @@ export class NPC {
     return {
       id: this._id,
       name: this._name,
+      portraitUrl: this._portraitUrl,
       description: this._description,
       isHostile: this._isHostile,
       properties: { ...this._properties },

@@ -17,6 +17,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
  *   setFlag: (key: string, value: *) => void,
  *   save: () => void,
  *   load: () => void,
+ *   closeDialog: () => void,
  * }}
  */
 export function useGame(manager) {
@@ -61,10 +62,11 @@ export function useGame(manager) {
 
   const save = useCallback(() => manager.game.save(), [manager]);
   const load = useCallback(() => manager.game.load(), [manager]);
+  const closeDialog = useCallback(() => manager.game.closeDialog(), [manager]);
 
   return useMemo(
-    () => ({ state, moveTo, pickUpItem, dropItem, setFlag, save, load }),
-    [state, moveTo, pickUpItem, dropItem, setFlag, save, load]
+    () => ({ state, moveTo, pickUpItem, dropItem, setFlag, save, load, closeDialog }),
+    [state, moveTo, pickUpItem, dropItem, setFlag, save, load, closeDialog]
   );
 }
 

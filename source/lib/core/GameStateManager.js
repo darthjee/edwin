@@ -31,6 +31,7 @@ export class GameStateManager {
     game.events.on('logUpdated', notify);
     game.events.on('gameStarted', notify);
     game.events.on('gameLoaded', notify);
+    game.events.on('dialogChanged', notify);
   }
 
   /**
@@ -66,6 +67,7 @@ export class GameStateManager {
       flags: { ...g.flags },
       log: [...g.log],
       isStarted: g.isStarted,
+      activeDialog: g.activeDialog?.toJSON?.() ?? null,
     };
   }
 }

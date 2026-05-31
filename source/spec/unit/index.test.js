@@ -6,7 +6,11 @@ describe('Edwin public API (lib/index.js)', () => {
     expect(Edwin.Game).toBeDefined();
     expect(Edwin.Location).toBeDefined();
     expect(Edwin.Path).toBeDefined();
+    expect(Edwin.Character).toBeDefined();
+    expect(Edwin.Player).toBeDefined();
     expect(Edwin.NPC).toBeDefined();
+    expect(Edwin.Message).toBeDefined();
+    expect(Edwin.Dialog).toBeDefined();
     expect(Edwin.Item).toBeDefined();
     expect(Edwin.Action).toBeDefined();
     expect(Edwin.Interaction).toBeDefined();
@@ -21,6 +25,7 @@ describe('Edwin public API (lib/index.js)', () => {
     expect(Edwin.GameContainer).toBeDefined();
     expect(Edwin.LocationView).toBeDefined();
     expect(Edwin.NPCDialog).toBeDefined();
+    expect(Edwin.DialogBox).toBeDefined();
     expect(Edwin.Inventory).toBeDefined();
     expect(Edwin.ActionPanel).toBeDefined();
     expect(Edwin.Navigation).toBeDefined();
