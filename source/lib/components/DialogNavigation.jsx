@@ -1,24 +1,8 @@
 import PropTypes from 'prop-types';
+import { DialogNavigationHelper } from './helpers/DialogNavigationHelper.jsx';
 
 function DialogNavigation({ showPrevious = false, onPrevious, onNext }) {
-  return (
-    <div className="d-flex justify-content-between mt-3">
-      <div>
-        {showPrevious && (
-          <button
-            type="button"
-            className="btn btn-sm btn-outline-secondary"
-            onClick={onPrevious}
-          >
-            Previous
-          </button>
-        )}
-      </div>
-      <button type="button" className="btn btn-sm btn-primary" onClick={onNext}>
-        Next
-      </button>
-    </div>
-  );
+  return DialogNavigationHelper.renderNavigation(showPrevious, onPrevious, onNext);
 }
 
 DialogNavigation.propTypes = {

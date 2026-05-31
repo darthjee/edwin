@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { DialogBoxController } from './controllers/DialogBoxController.js';
-import DialogNavigation from './DialogNavigation.jsx';
-import DialogSpeaker from './DialogSpeaker.jsx';
+import { DialogBoxHelper } from './helpers/DialogBoxHelper.jsx';
 
 function DialogBox({ dialog, onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,27 +26,17 @@ function DialogBox({ dialog, onClose }) {
     () => controller.nextMessage(activeIndex, messages.length),
     [activeIndex, controller, messages.length]
   );
+  if (!messages.length || !activeMessage) {
+    return null;
+  }
 
-  if (!messages.length || !activeMessage) {return null;}
-
-  return (
-    <div className="edwin-dialog-box card mt-3" role="dialog" aria-modal="false">
-      <div className="card-body">
-        <div className="dialog-box__layout">
-          <DialogSpeaker speaker={speaker} />
-          <div className="dialog-box__content">
-            <p className="dialog-box__text mb-0">{activeMessage.text}</p>
-          </div>
-        </div>
-
-        <DialogNavigation
-          showPrevious={activeIndex > 0}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-        />
-      </div>
-    </div>
-  );
+  return DialogBoxHelper.renderDialog({
+    activeMessage,
+    speaker,
+    showPrevious: activeIndex > 0,
+    onPrevious: handlePrevious,
+    onNext: handleNext,
+  });
 }
 
 DialogBox.propTypes = {
