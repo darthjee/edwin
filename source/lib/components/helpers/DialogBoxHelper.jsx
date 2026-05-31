@@ -1,5 +1,6 @@
 import DialogNavigation from '../DialogNavigation.jsx';
 import DialogSpeaker from '../DialogSpeaker.jsx';
+import DialogMessage from '../DialogMessage.jsx';
 
 class DialogBoxHelper {
   static renderDialog({ activeMessage, speaker, showPrevious, onPrevious, onNext }) {
@@ -9,7 +10,7 @@ class DialogBoxHelper {
           <div className="dialog-box__layout">
             <DialogSpeaker speaker={speaker} />
             <div className="dialog-box__content">
-              <p className="dialog-box__text mb-0">{activeMessage.text}</p>
+              <DialogMessage text={activeMessage.text} />
             </div>
           </div>
 

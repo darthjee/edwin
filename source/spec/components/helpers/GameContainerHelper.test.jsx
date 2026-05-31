@@ -26,6 +26,39 @@ describe('GameContainerHelper', () => {
     });
   });
 
+  describe('renderNavigationPanel', () => {
+    it('renders navigation controls for available paths', () => {
+      const helper = new GameContainerHelper();
+
+      render(
+        <div>
+          {helper.renderNavigationPanel({
+            north: { target: 'square', label: 'Town Square' },
+          }, vi.fn())}
+        </div>
+      );
+
+      expect(screen.getByText('🧭 Go…')).toBeInTheDocument();
+      expect(screen.getByText('Town Square')).toBeInTheDocument();
+    });
+
+    it('calls onNavigate when a navigation option is clicked', () => {
+      const onNavigate = vi.fn();
+      const helper = new GameContainerHelper();
+
+      render(
+        <div>
+          {helper.renderNavigationPanel({
+            north: { target: 'square', label: 'Town Square' },
+          }, onNavigate)}
+        </div>
+      );
+
+      fireEvent.click(screen.getByText('Town Square'));
+      expect(onNavigate).toHaveBeenCalledWith('north');
+    });
+  });
+
   describe('renderNPCDialog', () => {
     it('renders the NPCDialog when activeNPC is set', () => {
       const helper = new GameContainerHelper();

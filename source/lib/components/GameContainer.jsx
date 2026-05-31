@@ -13,7 +13,6 @@ import EventLog from './EventLog.jsx';
 import { GameContainerHelper } from './helpers/GameContainerHelper.jsx';
 import Inventory from './Inventory.jsx';
 import LocationView from './LocationView.jsx';
-import Navigation from './Navigation.jsx';
 import { useGame } from '../hooks/useGame.js';
 import { useInventory } from '../hooks/useInventory.js';
 import { useLocation } from '../hooks/useLocation.js';
@@ -83,16 +82,7 @@ function GameContainer({ manager, actions = [] }) {
             </div>
           </div>
 
-          {!hasActiveDialog && (
-            <div className="card mb-3">
-              <div className="card-body">
-                <Navigation
-                  paths={location?.paths ?? {}}
-                  onNavigate={navigate}
-                />
-              </div>
-            </div>
-          )}
+          {!hasActiveDialog && helper.renderNavigationPanel(location?.paths ?? {}, navigate)}
 
           {!hasActiveDialog && helper.renderActionPanel(availableActions, handleAction)}
         </main>

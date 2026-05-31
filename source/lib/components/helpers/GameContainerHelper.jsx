@@ -1,5 +1,6 @@
 import ActionPanel from '../ActionPanel.jsx';
 import NPCDialog from '../NPCDialog.jsx';
+import Navigation from '../Navigation.jsx';
 
 class GameContainerHelper {
   renderActionPanel(availableActions, onAction) {
@@ -8,6 +9,19 @@ class GameContainerHelper {
       <div className="card mb-3">
         <div className="card-body">
           <ActionPanel actions={availableActions} onAction={onAction} />
+        </div>
+      </div>
+    );
+  }
+
+  renderNavigationPanel(paths, onNavigate) {
+    return (
+      <div className="card mb-3">
+        <div className="card-body">
+          <Navigation
+            paths={paths}
+            onNavigate={onNavigate}
+          />
         </div>
       </div>
     );
