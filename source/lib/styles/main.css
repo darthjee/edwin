@@ -74,6 +74,41 @@
   line-height: 1.7;
 }
 
+/* ── Dialog Box ─────────────────────────────────────────────────────────────── */
+.edwin-dialog-box {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dialog-box__layout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.dialog-box__speaker {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dialog-box__portrait {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dialog-box__content {
+  flex: 1;
+}
+
+.dialog-box__text {
+  line-height: 1.7;
+}
+
 /* ── Inventory ──────────────────────────────────────────────────────────────── */
 .edwin-inventory .list-group-item {
   background-color: transparent;

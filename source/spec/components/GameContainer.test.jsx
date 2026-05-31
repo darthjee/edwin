@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import GameContainer from '../../lib/components/GameContainer.jsx';
 import { GameStateManager } from '../../lib/core/GameStateManager.js';
 import { Action } from '../../lib/entities/Action.js';
+import { Dialog } from '../../lib/entities/Dialog.js';
 import { Game } from '../../lib/entities/Game.js';
 import { Interaction } from '../../lib/entities/Interaction.js';
 import { Item } from '../../lib/entities/Item.js';
@@ -160,5 +161,16 @@ describe('GameContainer', () => {
     act(() => { fireEvent.click(screen.getByText('Boom!')); });
     expect(warn).toHaveBeenCalled();
     warn.mockRestore();
+  });
+
+  it('renders active dialog and hides scene choices while it is open', () => {
+    const manager = buildManager();
+    manager.game.displayDialog(new Dialog({ messages: [{ text: 'A mysterious voice echoes...' }] }));
+
+    render(<GameContainer manager={manager} />);
+
+    expect(screen.getByText('A mysterious voice echoes...')).toBeInTheDocument();
+    expect(screen.queryByText('↑ North')).toBeNull();
+    expect(screen.queryByText('Talk')).toBeNull();
   });
 });

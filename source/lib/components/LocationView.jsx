@@ -6,12 +6,12 @@
 import PropTypes from 'prop-types';
 import { LocationViewHelper } from './helpers/LocationViewHelper.jsx';
 
-function LocationView({ location, onPickUp, onTalkTo }) {
+function LocationView({ location, onPickUp, onTalkTo, interactionsEnabled = true }) {
   if (!location) {
     return <p className="text-muted fst-italic">You are in the void.</p>;
   }
 
-  const helper = new LocationViewHelper({ onPickUp, onTalkTo });
+  const helper = new LocationViewHelper({ onPickUp, onTalkTo, interactionsEnabled });
 
   return (
     <div className="edwin-location-view">
@@ -35,6 +35,7 @@ LocationView.propTypes = {
   }),
   onPickUp: PropTypes.func,
   onTalkTo: PropTypes.func,
+  interactionsEnabled: PropTypes.bool,
 };
 
 export default LocationView;
