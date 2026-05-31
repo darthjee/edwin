@@ -155,9 +155,7 @@ export class NPC extends Character {
    */
   toJSON() {
     return {
-      id: this._id,
-      name: this._name,
-      portraitUrl: this._portraitUrl,
+      ...super.toJSON(),
       description: this._description,
       isHostile: this._isHostile,
       properties: { ...this._properties },
