@@ -1,3 +1,5 @@
+import { Character } from './Character.js';
+
 /**
  * @file Message – dialog message with optional speaker.
  */
@@ -5,8 +7,8 @@
 export class Message {
   constructor({ text, character = null }) {
     if (!text) { throw new Error('Message requires text.'); }
-    if (character && typeof character.getName !== 'function') {
-      throw new Error('Message character must implement getName().');
+    if (character && !(character instanceof Character)) {
+      throw new Error('Message character must be a Character.');
     }
 
     this._text = text;
@@ -27,8 +29,8 @@ export class Message {
   }
 
   set character(character) {
-    if (character && typeof character.getName !== 'function') {
-      throw new Error('Message character must implement getName().');
+    if (character && !(character instanceof Character)) {
+      throw new Error('Message character must be a Character.');
     }
     this._character = character;
   }

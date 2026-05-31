@@ -13,7 +13,7 @@ describe('Message', () => {
     expect(message.character.getName()).toBe('Innkeeper');
   });
 
-  it('validates speaker interface', () => {
-    expect(() => new Message({ text: 'x', character: {} })).toThrow('Message character must implement getName().');
+  it('validates speaker type', () => {
+    expect(() => new Message({ text: 'x', character: {} })).toThrow('Message character must be a Character.');
   });
 });
