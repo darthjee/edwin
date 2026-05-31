@@ -8,11 +8,11 @@
 import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
 import { GameContainerController } from './controllers/GameContainerController.js';
+import DialogBox from './DialogBox.jsx';
 import EventLog from './EventLog.jsx';
 import { GameContainerHelper } from './helpers/GameContainerHelper.jsx';
 import Inventory from './Inventory.jsx';
 import LocationView from './LocationView.jsx';
-import Navigation from './Navigation.jsx';
 import { useGame } from '../hooks/useGame.js';
 import { useInventory } from '../hooks/useInventory.js';
 import { useLocation } from '../hooks/useLocation.js';
@@ -20,7 +20,7 @@ import { useLocation } from '../hooks/useLocation.js';
 const helper = new GameContainerHelper();
 
 function GameContainer({ manager, actions = [] }) {
-  const { state, moveTo, pickUpItem, dropItem } = useGame(manager);
+  const { state, moveTo, pickUpItem, dropItem, closeDialog } = useGame(manager);
   const { location, navigate } = useLocation(state, moveTo);
   const { inventory, drop } = useInventory(state, dropItem);
 
@@ -29,6 +29,7 @@ function GameContainer({ manager, actions = [] }) {
 
   const controller = new GameContainerController(manager, actions);
   const availableActions = controller.getAvailableActions(state);
+  const hasActiveDialog = Boolean(state.activeDialog);
 
   const handleAction = useCallback(
     (actionId) => { controller.executeAction(actionId, state); },
@@ -76,20 +77,14 @@ function GameContainer({ manager, actions = [] }) {
                 location={location}
                 onPickUp={handlePickUp}
                 onTalkTo={handleTalkTo}
+                interactionsEnabled={!hasActiveDialog}
               />
             </div>
           </div>
 
-          <div className="card mb-3">
-            <div className="card-body">
-              <Navigation
-                paths={location?.paths ?? {}}
-                onNavigate={navigate}
-              />
-            </div>
-          </div>
+          {helper.renderNavigationPanel(hasActiveDialog, location?.paths ?? {}, navigate)}
 
-          {helper.renderActionPanel(availableActions, handleAction)}
+          {helper.renderActionPanel(hasActiveDialog, availableActions, handleAction)}
         </main>
 
         <aside className="col-md-4">
@@ -101,6 +96,7 @@ function GameContainer({ manager, actions = [] }) {
       </div>
 
       {helper.renderNPCDialog(activeNPC, dialogStep, handleDialogChoose, handleDialogClose)}
+      <DialogBox dialog={state.activeDialog} onClose={closeDialog} />
     </div>
   );
 }

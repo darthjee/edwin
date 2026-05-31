@@ -1,7 +1,8 @@
 class LocationViewHelper {
-  constructor({ onPickUp, onTalkTo } = {}) {
+  constructor({ onPickUp, onTalkTo, interactionsEnabled = true } = {}) {
     this.onPickUp = onPickUp;
     this.onTalkTo = onTalkTo;
+    this.interactionsEnabled = interactionsEnabled;
   }
 
   renderImage(location) {
@@ -21,7 +22,7 @@ class LocationViewHelper {
   }
 
   renderPickUpButton(item) {
-    if (!item.isPickable || !this.onPickUp) {return null;}
+    if (!this.interactionsEnabled || !item.isPickable || !this.onPickUp) {return null;}
     return (
       <button
         type="button"
@@ -39,7 +40,7 @@ class LocationViewHelper {
   }
 
   renderTalkButton(npc) {
-    if (!this.onTalkTo) {return null;}
+    if (!this.interactionsEnabled || !this.onTalkTo) {return null;}
     return (
       <button
         type="button"

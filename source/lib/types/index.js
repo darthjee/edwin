@@ -10,6 +10,7 @@
  * @property {Array<ItemData>} playerInventory - Player's held items.
  * @property {object} flags - Arbitrary game flags.
  * @property {Array<LogEntry>} log - Event log entries.
+ * @property {DialogData | null} [activeDialog] - Active dialog rendered in UI.
  */
 
 /**
@@ -27,6 +28,24 @@
  * @typedef {object} LogEntry
  * @property {string} text
  * @property {number} timestamp - Unix milliseconds.
+ */
+
+/**
+ * @typedef {object} DialogData
+ * @property {Array<MessageData>} messages
+ */
+
+/**
+ * @typedef {object} MessageData
+ * @property {string} text
+ * @property {CharacterData | null} character
+ */
+
+/**
+ * @typedef {object} CharacterData
+ * @property {string} id
+ * @property {string} name
+ * @property {string | null} portraitUrl
  */
 
 /**

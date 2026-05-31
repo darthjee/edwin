@@ -3,6 +3,7 @@
  * global state, player inventory, and event coordination.
  */
 
+import { Dialog } from './Dialog.js';
 import { EventSystem } from './EventSystem.js';
 
 /**
@@ -54,6 +55,9 @@ export class Game {
 
     /** @type {Array<string>} Chronological event log entries. */
     this.log = [];
+
+    /** @type {Dialog | null} */
+    this.activeDialog = null;
   }
 
   // ─── Locations ────────────────────────────────────────────────────────────
@@ -100,6 +104,7 @@ export class Game {
 
     this.addLogEntry(`You move to ${location.name}.`);
     this.events.emit('locationChanged', { previous, current: locationId, location });
+    location.onEnter?.(this);
   }
 
   // ─── Inventory ────────────────────────────────────────────────────────────
@@ -183,6 +188,21 @@ export class Game {
     this.events.emit('logUpdated', { entry });
   }
 
+  displayDialog(dialog) {
+    if (!(dialog instanceof Dialog)) {
+      throw new Error('displayDialog() requires a Dialog instance.');
+    }
+    this.activeDialog = dialog;
+    this.events.emit('dialogChanged', { dialog });
+  }
+
+  closeDialog() {
+    const previousDialog = this.activeDialog;
+    this.activeDialog = null;
+    this.events.emit('dialogChanged', { dialog: null });
+    previousDialog?.onEnd?.();
+  }
+
   // ─── Persistence ──────────────────────────────────────────────────────────
 
   /**
@@ -249,6 +269,7 @@ export class Game {
     if (!loaded) {
       this._currentLocationId = this._startLocationId;
       this.addLogEntry(`${this.title} – Adventure begins!`);
+      this.currentLocation?.onEnter?.(this);
     }
 
     this.events.emit('gameStarted', { loaded });

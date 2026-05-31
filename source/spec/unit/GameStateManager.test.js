@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { GameStateManager } from '../../lib/core/GameStateManager.js';
+import { Dialog } from '../../lib/entities/Dialog.js';
 import { Game } from '../../lib/entities/Game.js';
 import { Location } from '../../lib/entities/Location.js';
 
@@ -82,5 +83,16 @@ describe('GameStateManager', () => {
     game.moveTo('b');
     expect(cb).toHaveBeenCalled();
     expect(cb.mock.calls[0][0].currentLocationId).toBe('b');
+  });
+
+  it('notifies on dialogChanged with activeDialog snapshot', () => {
+    const manager = buildManager();
+    const cb = vi.fn();
+    manager.subscribe(cb);
+
+    manager.game.displayDialog(new Dialog({ messages: [{ text: 'Hello there' }] }));
+
+    expect(cb).toHaveBeenCalled();
+    expect(cb.mock.calls[0][0].activeDialog.messages[0].text).toBe('Hello there');
   });
 });

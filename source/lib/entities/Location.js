@@ -27,6 +27,7 @@ export class Location {
    * @param {Record<string, object | Path>} [config.paths={}] - Map of direction → path definition.
    * @param {Array<import('./Item.js').Item>} [config.items=[]] - Items present.
    * @param {Array<import('./NPC.js').NPC>} [config.npcs=[]] - NPCs present.
+   * @param {Function | null} [config.onEnter=null] - Callback executed when player enters the location.
    * @param {object} [config.properties={}] - Arbitrary metadata.
    */
   constructor({
@@ -38,6 +39,7 @@ export class Location {
     paths = {},
     items = [],
     npcs = [],
+    onEnter = null,
     properties = {},
   }) {
     if (!id) { throw new Error('Location requires an id.'); }
@@ -51,6 +53,7 @@ export class Location {
     this._paths = this.#normalizePaths(paths);
     this._items = [...items];
     this._npcs = [...npcs];
+    this._onEnter = onEnter;
     this._properties = { ...properties };
     this._isLocked = false;
   }
@@ -89,6 +92,10 @@ export class Location {
 
   get properties() {
     return this._properties;
+  }
+
+  get onEnter() {
+    return this._onEnter;
   }
 
   get isLocked() {

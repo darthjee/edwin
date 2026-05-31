@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { Dialog } from '../../lib/entities/Dialog.js';
 import { Game } from '../../lib/entities/Game.js';
 import { Item } from '../../lib/entities/Item.js';
 import { Location } from '../../lib/entities/Location.js';
@@ -161,6 +162,41 @@ describe('Game', () => {
     expect(json.title).toBe('Test Game');
     expect(json.startLocationId).toBe('start');
     expect(json.locations).toHaveLength(2);
+  });
+
+  it('displayDialog() sets active dialog and emits event', () => {
+    const emitted = [];
+    const dialog = new Dialog({ messages: [{ text: 'Welcome' }] });
+    game.events.on('dialogChanged', (payload) => emitted.push(payload));
+
+    game.displayDialog(dialog);
+
+    expect(game.activeDialog).toBe(dialog);
+    expect(emitted).toHaveLength(1);
+    expect(emitted[0].dialog).toBe(dialog);
+  });
+
+  it('closeDialog() clears active dialog and calls onEnd callback', () => {
+    const onEnd = vi.fn();
+    const dialog = new Dialog({ messages: [{ text: 'Bye' }], onEnd });
+    game.displayDialog(dialog);
+
+    game.closeDialog();
+
+    expect(game.activeDialog).toBeNull();
+    expect(onEnd).toHaveBeenCalledTimes(1);
+  });
+
+  it('start() calls location onEnter callback', () => {
+    const onEnter = vi.fn();
+    const g = new Game({ id: 'with_enter', title: 'With Enter' });
+    const start = new Location({ id: 'start', name: 'Start Room', onEnter });
+    g.addLocation(start);
+    g.setStartLocation('start');
+
+    g.start();
+
+    expect(onEnter).toHaveBeenCalledWith(g);
   });
 
   it('save() logs error and does not throw when localStorage fails', () => {
