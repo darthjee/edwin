@@ -18,7 +18,10 @@ function DialogBox({ dialog, onClose }) {
     () => speaker?.portraitUrl || silhouettePortrait,
     [speaker]
   );
-  const controller = new DialogBoxController(onClose, setActiveIndex);
+  const controller = useMemo(
+    () => new DialogBoxController(onClose, setActiveIndex),
+    [onClose]
+  );
 
   if (!messages.length || !activeMessage) {return null;}
 
