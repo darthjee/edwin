@@ -28,6 +28,10 @@ Public entities in Edwin must be easy to extend through inheritance while keepin
    - Keep persistence output stable and explicit.
    - For nested entities, serialize using each child entity's `toJSON()`.
 
+7. **Validate entity references with `instanceof`.**
+   - Keep runtime checks aligned across entities.
+   - Avoid `*.prototype.isPrototypeOf(...)` in new validations.
+
 ## Reference Pattern
 
 ```js
