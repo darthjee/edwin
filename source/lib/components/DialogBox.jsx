@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useMemo, useState } from 'react';
 import silhouettePortrait from '../assets/silhouette.svg';
+import { DialogBoxController } from './controllers/DialogBoxController.js';
 
 function DialogBox({ dialog, onClose }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -17,20 +18,9 @@ function DialogBox({ dialog, onClose }) {
     () => speaker?.portraitUrl || silhouettePortrait,
     [speaker]
   );
+  const controller = new DialogBoxController(onClose, setActiveIndex);
 
   if (!messages.length || !activeMessage) {return null;}
-
-  const handleNext = () => {
-    if (activeIndex >= messages.length - 1) {
-      onClose();
-      return;
-    }
-    setActiveIndex((idx) => idx + 1);
-  };
-
-  const handlePrevious = () => {
-    setActiveIndex((idx) => Math.max(idx - 1, 0));
-  };
 
   return (
     <div className="edwin-dialog-box card mt-3" role="dialog" aria-modal="false">
@@ -50,12 +40,12 @@ function DialogBox({ dialog, onClose }) {
         <div className="d-flex justify-content-between mt-3">
           <div>
             {activeIndex > 0 && (
-              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={handlePrevious}>
+              <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => controller.previousMessage()}>
                 Previous
               </button>
             )}
           </div>
-          <button type="button" className="btn btn-sm btn-primary" onClick={handleNext}>
+          <button type="button" className="btn btn-sm btn-primary" onClick={() => controller.nextMessage(activeIndex, messages.length)}>
             Next
           </button>
         </div>
