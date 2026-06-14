@@ -24,6 +24,19 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - check-version-tag:
+          filters:
+            tags:
+              only: /\d+\.\d+\.\d+/
+            branches:
+              ignore: /.*/
+      - npm-publish:
+          requires: [check-version-tag, jasmine, basic_example_jasmine, advanced_example_jasmine, checks]
+          filters:
+            tags:
+              only: /\d+\.\d+\.\d+/
+            branches:
+              ignore: /.*/
 
 jobs:
   jasmine:
@@ -93,3 +106,26 @@ jobs:
       - run:
           name: Finalize coverage on Codacy
           command: bash <(curl -Ls https://coverage.codacy.com/get.sh) final
+
+  check-version-tag:
+    docker:
+      - image: darthjee/circleci_node:0.2.1
+    steps:
+      - checkout
+      - run:
+          name: Check tag matches package.json and README versions
+          command: bash scripts/check_tag_version.sh
+
+  npm-publish:
+    docker:
+      - image: darthjee/circleci_node:0.2.1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: cd source; yarn install --frozen-lockfile
+      - run:
+          name: Publish to npm
+          command: |
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+            cd source; npm publish --access public
